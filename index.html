@@ -9,27 +9,59 @@
   </head>
   <body>
     <div class="row">
-      <div class="large-4 large-centered columns">
-        <h1>TurnT</h1>
+      <div class="large-12 large-centered columns main-nav">
+        <h1>SEARCH FOR YOUR EMPLOYEES</h1>
       </div>
     </div>
-    <div class="row">
-      <div class="large-8 large-centered columns">
+    <div class="form-wrap">
+      <form>
         <div class="row">
-          <div class="large-5 columns">
-            <h4>Get out the Early Vote</h4>
+          <div class="medium-6 columns">
+            <label>First Name <span class="required">*</span>
+              <input name="FSTNAM" type="text" placeholder="First Name">
+            </label>
+            <p class="form-error help-text" id="FSTNAM">Please enter a first name</p>
+            <p class="help-text">Fields with a <span class="required">*</span> are required</p>
           </div>
-          <div class="large-7 columns">
-            <p>Learn more about this program and enroll your company</p>
-            <a href="signup.html" class="button">Sign Up</a>
+          <div class="medium-6 columns">
+            <label>Last Name <span class="required">*</span>
+              <input name="LSTNAM" type="text" placeholder="Last Name">
+            </label>
+            <p class="form-error help-text" id="LSTNAM">Please enter a last name</p>
           </div>
         </div>
-      <div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <label>Middle Name
+              <input name="MIDNAM" type="text" placeholder="Middle Name">
+            </label>
+          </div>
+          <div class="medium-3 columns">
+            <label>Zip code
+              <input name="MZIPCD" type="text" placeholder="Zip code">
+            </label>
+            <p class="form-error help-text" id="MZIPCD">Please enter a valid zip code</p>
+          </div>
+          <div class="medium-3 columns">
+            <label>Gender
+              <select name="GENDER">
+                <option value="">Not specified</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-12 column"><a class="large button search" href="#">Search</a></div>
+        </div>
+      </form>
     </div>
 
     <script src="./bower_components/jquery/dist/jquery.js"></script>
     <script src="./bower_components/what-input/what-input.js"></script>
     <script src="./bower_components/foundation-sites/dist/foundation.js"></script>
+    <script src="./bower_components/lodash/dist/lodash.min.js"></script>
     <script src="./js/app.js"></script>
   </body>
 </html>
