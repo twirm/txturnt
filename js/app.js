@@ -108,22 +108,16 @@ $(document).ready(function () {
 
     formIsValid: function (btn) {
       var $btn = $(btn),
-          isValid = !$btn.hasClass('disabled'),
+          isFormValid = true,
           queryDB = this;
 
-      isValid = isValid ? _.reduce(this.keys, function (bool, key) {
-        var func = queryDB.validator.fields[key];
-        if (func) {
-          return queryDB.validator.validate(func, key, $('input[name="' + key + '"]')) && bool;
-        } else {
-          return bool;
-        }
-      }, true) : false;
+      _.forEach(this.validator.fields, function (func, key) {
+        var isInputValid = queryDB.validator.validate(func, key, $('input[name="' + key + '"]'));
+        queryDB.validator.setBtnValidity(key, isInputValid);
+        isFormValid = isFormValid ? isInputValid : isFormValid;
+      });
 
-      if (!isValid) {
-        $btn.addClass('disabled');
-      }
-      return isValid;
+      return isFormValid;
     },
 
     get: function () {
