@@ -74,36 +74,27 @@ $(document).ready(function () {
   QueryDB.prototype = {
     keys: ['FSTNAM', 'LSTNAM', 'MIDNAM', 'MZIPCD', 'GENDER'],
 
-    stubbedData: {
-      voters: [
-        {
-          'FSTNAM': 'Luke',
-          'LSTNAM': 'Whyte',
-          'MIDNAM': 'Allan',
-          'MZIPCD': '78721',
-          'GENDER': 'M',
-        },
-        {
-          'FSTNAM': 'Victoria',
-          'LSTNAM': 'O\'Dell',
-          'MZIPCD': '78741',
+    generateMockedVoters: function (queryString) {
+      var fields = JSON.parse(queryString),
+          getRandomNum = function randomIntFromInterval (min, max) {
+            return Math.floor(Math.random()*(max-min+1)+min);
+          },
+          zipCodes = ['78741', '78721', '78751', '78748'],
+          getRandomMiddleName = function () {
+            var names = ['Esquivel', 'Taylor', 'Grant'],
+                idx = getRandomNum(0, 5);
+            return names[idx] ? names[idx] : '';
+          };
+      return _.reduce(Array(getRandomNum(2, 4)), function (result, idx) {
+        result.push({
+          'FSTNAM': fields['FSTNAM'],
+          'LSTNAM': fields['LSTNAM'],
+          'MIDNAM': fields['MIDNAM'] ? fields['MIDNAM'] : getRandomMiddleName(),
+          'MZIPCD': fields['MZIPCD'] ? fields['MZIPCD'] : zipCodes[getRandomNum(0, 3)],
           'GENDER': 'F',
-        },
-        {
-          'FSTNAM': 'Victoria',
-          'LSTNAM': 'O\'Dell',
-          'MIDNAM': '',
-          'MZIPCD': '78741',
-          'GENDER': 'F',
-        },
-        {
-          'FSTNAM': 'Luke',
-          'LSTNAM': 'Whyte',
-          'MIDNAM': 'Allan',
-          'MZIPCD': '78721',
-          'GENDER': 'M',
-        },
-      ],
+        });
+        return result;
+      }, []);
     },
 
     formIsValid: function (btn) {
@@ -129,8 +120,8 @@ $(document).ready(function () {
       var queryDB = this;
 
       setTimeout(function () {
-        queryDB.renderResults(queryDB.stubbedData);
-      }, 2000);
+        queryDB.renderResults({ 'voters': queryDB.generateMockedVoters(queryString) });
+      }, 1000);
     },
 
     renderResults: function (voters) {
