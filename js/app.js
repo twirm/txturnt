@@ -85,16 +85,26 @@ $(document).ready(function () {
                 idx = getRandomNum(0, 5);
             return names[idx] ? names[idx] : '';
           };
-      return _.reduce(Array(getRandomNum(2, 4)), function (result, idx) {
-        result.push({
+      if (fields['MZIPCD']) {
+        return [{
           'FSTNAM': fields['FSTNAM'],
           'LSTNAM': fields['LSTNAM'],
-          'MIDNAM': fields['MIDNAM'] ? fields['MIDNAM'] : getRandomMiddleName(),
-          'MZIPCD': fields['MZIPCD'] ? fields['MZIPCD'] : zipCodes[getRandomNum(0, 3)],
+          'MIDNAM': fields['MIDNAM'],
+          'MZIPCD': fields['MZIPCD'],
           'GENDER': 'F',
-        });
-        return result;
-      }, []);
+        }];
+      } else {
+        return _.reduce(Array(getRandomNum(2, 4)), function (result, idx) {
+          result.push({
+            'FSTNAM': fields['FSTNAM'],
+            'LSTNAM': fields['LSTNAM'],
+            'MIDNAM': fields['MIDNAM'] ? fields['MIDNAM'] : getRandomMiddleName(),
+            'MZIPCD': fields['MZIPCD'] ? fields['MZIPCD'] : zipCodes[getRandomNum(0, 3)],
+            'GENDER': 'F',
+          });
+          return result;
+        }, []);
+      }
     },
 
     formIsValid: function (btn) {
