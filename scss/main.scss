@@ -1,5 +1,35 @@
 /* 
+ * Home page
+ */
+ .home-icon{
+   height: 300px; 
+ }
+
+/* 
  * Nav bar
+ */
+
+nav{ 
+  text-align:left; 
+  color: white; 
+  font-weight: 700; 
+  margin-bottom: 25px;
+  font-size: 1.25 rem; 
+  a{
+    color: white; 
+  }
+  a:hover{
+    color: white; 
+  }
+
+}
+
+.top-bar{   
+  background-color: #EF4438;
+}
+
+/* 
+ * Explanitory text
  */
 
 .main-nav {

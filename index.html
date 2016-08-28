@@ -1,61 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html class="no-js" lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TX Turn</title>
-    <link rel="stylesheet" href="./css/app.css">
-  </head>
-  <body>
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Serve the Vote </title>
+    <link href="./css/app.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+<div class="fixed">
+  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
     <div class="row">
-      <div class="large-12 large-centered columns main-nav">
-        <h1>SEARCH FOR YOUR EMPLOYEES</h1>
-      </div>
+         <a href="home.html">Serve the Vote</a>
+    <div>
+  </nav>
+</div>
+
+
+    <div class="row">
+        <div class="large-12 large-centered columns main-nav main-nav">
+            <h1 class="font">Search for Your Employees</h1>
+
+
+            <p>Check if your employee is registered to vote and qualifies for
+            an hour off to visit the nearest polling location. The last day to
+            register to vote for November elections was October 11th, 2016.</p>
+        </div>
     </div>
     <div class="form-wrap">
-      <form>
-        <div class="row">
-          <div class="medium-6 columns">
-            <label>First Name <span class="required">*</span>
-              <input name="FSTNAM" type="text" placeholder="First Name">
-            </label>
-            <p class="form-error help-text" id="FSTNAM">Please enter a first name</p>
-            <p class="help-text">Fields with a <span class="required">*</span> are required</p>
-          </div>
-          <div class="medium-6 columns">
-            <label>Last Name <span class="required">*</span>
-              <input name="LSTNAM" type="text" placeholder="Last Name">
-            </label>
-            <p class="form-error help-text" id="LSTNAM">Please enter a last name</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="medium-6 columns">
-            <label>Middle Name
-              <input name="MIDNAM" type="text" placeholder="Middle Name">
-            </label>
-          </div>
-          <div class="medium-3 columns">
-            <label>Zip code
-              <input name="MZIPCD" type="text" placeholder="Zip code">
-            </label>
-            <p class="form-error help-text" id="MZIPCD">Please enter a valid zip code</p>
-          </div>
-          <div class="medium-3 columns">
-            <label>Gender
-              <select name="GENDER">
-                <option value="">Not specified</option>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-              </select>
-            </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="medium-12 column"><a class="large button search" href="#">Search</a></div>
-        </div>
-      </form>
+        <form>
+            <div class="row">
+                <div class="medium-6 columns">
+                    <label>First Name <span class="required">*</span>
+                    <input name="FSTNAM" placeholder="First Name" type=
+                    "text"></label>
+
+                    <p class="form-error help-text" id="FSTNAM">Please enter a
+                    first name</p>
+
+
+                    <p class="help-text">Fields with a <span class=
+                    "required">*</span> are required</p>
+                </div>
+
+
+                <div class="medium-6 columns">
+                    <label>Last Name <span class="required">*</span>
+                    <input name="LSTNAM" placeholder="Last Name" type=
+                    "text"></label>
+
+                    <p class="form-error help-text" id="LSTNAM">Please enter a
+                    last name</p>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="medium-6 columns">
+                    <label>Middle Name <input name="MIDNAM" placeholder=
+                    "Middle Name" type="text"></label>
+                </div>
+
+
+                <div class="medium-3 columns">
+                    <label>Zip code <input name="MZIPCD" placeholder="Zip code"
+                    type="text"></label>
+
+                    <p class="form-error help-text" id="MZIPCD">Please enter a
+                    valid zip code</p>
+                </div>
+
+
+                <div class="medium-3 columns">
+                    <label>Gender <select name="GENDER">
+                        <option value="">
+                            Not specified
+                        </option>
+
+                        <option value="female">
+                            Female
+                        </option>
+
+                        <option value="male">
+                            Male
+                        </option>
+                    </select></label>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="medium-12 column">
+                    <a class="large button search" href="#">Search</a>
+                </div>
+            </div>
+        </form>
     </div>
     <div class="table-wrap">
       <h5 class="medium-4 medium-left">Results</h3>
@@ -76,15 +120,15 @@
     <script src="./bower_components/lodash/dist/lodash.min.js"></script>
     <script src="./js/app.js"></script>
     <script type="text/html" id="search_results_tmpl">
-      <% _.forEach(voters, function (voter) { 
+      <% _.forEach(voters, function (voter) {
         var middleName = voter.MIDNAM ? voter.MIDNAM + ' ' : '',
-            fullName = voter.FSTNAM + ' ' + middleName + voter.LSTNAM; 
+            fullName = voter.FSTNAM + ' ' + middleName + voter.LSTNAM;
         return %>
           <tr>
             <td><%=fullName%></td>
             <td><%=voter.MZIPCD%></td>
           </tr> <%
-        }); 
+        });
       %>
     </script>
   </body>
